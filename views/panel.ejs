@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fast Sms Bomber Panel - Turkey</title>
+    <meta name="description" content="Fast Sms Bomber Panel - Turkey">
+    <meta name="keywords" content="Fast Sms Bomber Panel - Turkey">
+    <meta name="author" content="Fast Sms Bomber Panel - Turkey">
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+        integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous"><!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+
+</head>
+<body style="background-color: #222D32;">
+
+    <h1 style="color: white; text-align: center; margin-top: 50px;">Fast Sms Bomber Panel - Turkey</h1>
+    <p style="color: white; text-align: center;">VIP Alarak Günlük <%= config.limits.vip %> SMS Gönderebilirsiniz!<br><a href="/discord" style="color: rgb(92, 70, 214);">Discord</a> Sunucumuza Katılarak VIP Alabilirsiniz!</p>
+    <div class="col col-lg-3" style="margin: 0 auto; margin-top: 100px;">
+        <label for="number" style="color: white;">Numara;</label>
+        <input type="text" class="form-control" name="number" id="number" placeholder="5xxxxxxxxx Şeklinde Giriniz!"><br>
+        <label for="amount" style="color: white;">Miktar <span style="color: red;">(1*11 Şekilnde Gönderir)</span>;</label>
+        <input type="number" min="1" class="form-control" name="amount" id="amount" placeholder="Miktar Giriniz!"><br>
+        <button type="button" class="btn btn-primary" onclick="send()" style="width: 100%;">Gönder</button>
+    </div>
+
+    <br>
+    <div align="center">
+        <h2 style="color: white;">API</h2>
+        <p for="api" style="color: white;">API Key; <%= user.key %></p>
+        <p style="color: white;">https://domain.com/api/v1?no=5551234567&key=<%= user.key %>&amount=10</p>
+    </div>
+
+    <h1 style="color: white; text-align: center; margin-top: 50px;">Gönderilen SMS'ler</h1>
+    
+    <table class="table table-dark" style="margin-top: 50px; width: 90%; border-radius: 17px;" align="center">
+        <thead>
+            <tr>
+                <th>Numara</th>
+                <th>Miktar</th>
+                <th>Tarih</th>
+            </tr>
+        </thead>
+        <tbody id="numbers">
+            <% logs.forEach(function(number){ %>
+                <tr>
+                    <td ><%= number.no %></td>
+                    <td><%= number.amount %> <span id="total_<%= number._id %>"></span></td>
+                    <td><%= number.date %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+
+    <footer style="margin-top: 50px; color: white; text-align: center;">
+        <p>Fast Sms Bomber Panel - Turkey <br> <a href="https://github.com/fastuptime" target="_blank">Fast Uptime &hearts;</a></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        let urlParams = new URLSearchParams(window.location.search);
+        let msg = urlParams.get('message');
+        if (urlParams.get('error') == 'true') {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: `${msg}`,
+                footer: 'Fast SMS Bomber Panel',
+                confirmButtonText: 'Tamam',
+                timer: 5000
+            }).then((result) => {
+                window.location.href = window.location.href.split('?')[0];
+            });
+        }
+        if (urlParams.get('success') == 'true') {
+            Swal.fire({
+                icon: 'success',
+                title: 'Başarılı',
+                text: `${msg}`,
+                footer: 'Fast SMS Bomber Panel',
+                confirmButtonText: 'Anlaşıldı',
+                timer: 3000
+            }).then((result) => {
+                window.location.href = window.location.href.split('?')[0];
+            });
+        }
+    </script>
+
+    <script>
+        async function send() {
+            let number = document.getElementById("number").value;
+            let amount = document.getElementById("amount").value;
+            if (number == "" || amount == "") return window.location.href = window.location.href + `?error=true&message=Numara veya Miktar Boş Olamaz!`;
+            if (number.length != 10) return window.location.href = window.location.href + `?error=true&message=Numara 11 Haneli Olmalıdır!`;
+            let res = fetch('/api/send',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    number: number,
+                    amount: amount
+                })
+            })
+
+            res = await res.then(res => res.json())
+            if(res.status) return window.location.href = window.location.href + `?success=true&message=${res.message}`;
+            window.location.href = window.location.href + `?error=true&message=${res.message}`;
+        }
+    </script>
+</body>
+</html>

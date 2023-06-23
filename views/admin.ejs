@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fast Sms Bomber Panel - Turkey</title>
+    <meta name="description" content="Fast Sms Bomber Panel - Turkey">
+    <meta name="keywords" content="Fast Sms Bomber Panel - Turkey">
+    <meta name="author" content="Fast Sms Bomber Panel - Turkey">
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+        integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous"><!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</head>
+<body style="background-color: #222D32;">
+
+    <h1 style="color: white; text-align: center; margin-top: 50px;">Fast Sms Bomber Panel - Turkey</h1>
+    <div class="col col-lg-3" style="margin: 0 auto; margin-top: 100px;">
+        <form action="/admin/adduser" method="POST">
+            <label for="name" style="color: white;">Kullanıcı Adı;</label>
+            <input type="text" class="form-control" name="name" id="name" placeholder="Kullanıcı Adı Giriniz!"><br>
+            <label for="email" style="color: white;">E-posta;</label>
+            <input type="email" class="form-control" name="email" id="email" placeholder="E-posta Giriniz!"><br>
+            <label for="password" style="color: white;">Şifre;</label>
+            <input type="password" class="form-control" name="password" id="password" placeholder="Şifre Giriniz!"><br>
+            <button class="btn btn-success" type="submit" id="addUser" style="width: 100%;">Kullanıcı Ekle</button>
+        </form>
+    </div>
+
+    <h1 style="color: white; text-align: center; margin-top: 50px;">Kullanıcılar</h1>
+    
+    <table class="table table-dark" style="margin-top: 50px; width: 90%; border-radius: 17px;" align="center">
+        <thead>
+            <tr>
+                <th>Kullanıcı Adı</th>
+                <th>E-posta</th>
+                <th>Şifre</th>
+                <th>Statü</th>
+                <th>API KEY</th>
+                <th>Oluşturulma Tarihi</th>
+                <th>Yönet</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% users.forEach(function(x){ %>
+                <tr>
+                    <td ><%= x.name %></td>
+                    <td ><%= x.email %></td>
+                    <td ><%= x.password %></td>
+                    <td ><%= x.role %></td>
+                    <td ><%= x.key %></td>
+                    <td ><%= x.created_at %></td>
+                    <td>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                Yönet
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="/admin/role/admin/<%= x.id %>">Admin Yap</a>
+                                <a class="dropdown-item" href="/admin/role/vip/<%= x.id %>">Vip Yap</a>
+                                <a class="dropdown-item" href="/admin/role/user/<%= x.id %>">Kullanıcı Yap</a>
+                                <a class="dropdown-item" href="/admin/spamlogs/<%= x.id %>">Spam Logları</a>
+                                <a class="dropdown-item" href="/admin/delete/<%= x.id %>">Sil</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+
+    <footer style="margin-top: 50px; color: white; text-align: center;">
+        <p>Fast Sms Bomber Panel - Turkey <br> <a href="https://github.com/fastuptime" target="_blank">Fast Uptime &hearts;</a></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        let urlParams = new URLSearchParams(window.location.search);
+        let msg = urlParams.get('message');
+        if (urlParams.get('error') == 'true') {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: `${msg}`,
+                footer: 'Fast SMS Bomber Panel',
+                confirmButtonText: 'Tamam',
+                timer: 5000
+            }).then((result) => {
+                window.location.href = window.location.href.split('?')[0];
+            });
+        }
+        if (urlParams.get('success') == 'true') {
+            Swal.fire({
+                icon: 'success',
+                title: 'Başarılı',
+                text: `${msg}`,
+                footer: 'Fast SMS Bomber Panel',
+                confirmButtonText: 'Anlaşıldı',
+                timer: 3000
+            }).then((result) => {
+                window.location.href = window.location.href.split('?')[0];
+            });
+        }
+    </script>
+
+    <script>
+        async function send() {
+            let number = document.getElementById("number").value;
+            let amount = document.getElementById("amount").value;
+            if (number == "" || amount == "") return window.location.href = window.location.href + `?error=true&message=Numara veya Miktar Boş Olamaz!`;
+            if (number.length != 10) return window.location.href = window.location.href + `?error=true&message=Numara 11 Haneli Olmalıdır!`;
+
+            /*
+            {
+                status: false,
+                message: "Numara veya Miktar Boş Olamaz!"
+            }
+            */
+           // /api/send adresine istek at fetch ile
+
+            let res = fetch('/api/send',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    number: number,
+                    amount: amount
+                })
+            })
+
+            res = await res.then(res => res.json())
+            if(res.status) return window.location.href = window.location.href + `?success=true&message=${res.message}`;
+            window.location.href = window.location.href + `?error=true&message=${res.message}`;
+        }
+    </script>
+</body>
+</html>
