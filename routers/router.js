@@ -16,15 +16,12 @@ module.exports = function () {
     }
 
     global.adminAuth = async (req, res, next) => {
-        if(checkAuth) {
-            const user = await userModel.findOne({ _id: req.cookies.user });
-            if(user.role == "admin") {
-                next();
-            } else {
-                res.redirect('/panel?error=true&message=Yetkiniz Yok');
-            }
+        const user = await userModel.findOne({ _id: req.cookies.user });
+        if (!user) return res.redirect('/auth/login?error=true&message=Lütfen Giriş Yapınız');
+        if(user.role == "admin") {
+            next();
         } else {
-            res.redirect('/auth/login?error=true&message=Lütfen Giriş Yapınız');
+            res.redirect('/panel?error=true&message=Yetkiniz Yok');
         }
     }
     
