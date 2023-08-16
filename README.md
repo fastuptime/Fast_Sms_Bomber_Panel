@@ -1,6 +1,6 @@
 # Fast_Sms_Bomber_Panel
 
-## Resimler
+##  🎈 Images 🎈
 
 ![image](https://github.com/fastuptime/Fast_Sms_Bomber_Panel/assets/63351166/075896b9-94af-4447-8dd8-a0e809f51ade)
 ![image](https://github.com/fastuptime/Fast_Sms_Bomber_Panel/assets/63351166/c8c63020-1683-4edc-99da-166eb5200796)
@@ -11,27 +11,39 @@
 ![image](https://github.com/fastuptime/Fast_Sms_Bomber_Panel/assets/63351166/d2245b7f-0b6a-458a-aced-f0f8765dfbca)
 ![image](https://github.com/fastuptime/Fast_Sms_Bomber_Panel/assets/63351166/5aa1a96a-ff00-4bac-b60c-fb739abeb08d)
 
-## Notlar
+## 📜 Notes 📜
 
-- Eğitim Amaçlı Yapılmıştır.
-- Saldırı Amaçlı Kullanmak Suçtur.
-- Eğitim Amaçlı Olduğu İçin Sadece 10 Sitenin Açıklarından Faydalanılmıştır.
-- Siteler Captcha/Anti Bot/Vb. Kullanmadığı İçin Bu Açıklardan Kolayca Faydalanabilirsiniz.
-- Siteler Bu Tür Sistemleri Engelllemek İçin En Azından Captcha Kullanabilirler.
-- Bu Tür Sistemler Birden Fazla Site İçin Yapılabilir. Bu Şekilde Bir Hedefi Rahtsız Edebilir.
-- Ek olarak Config Dosyasını Kontrol Ediniz Orada Sizin İçin Bir Şey Var
+- It was made for educational purposes.
+- It is an offence to use it for attack purposes.
+- For educational purposes, only 10 sites have been utilised for vulnerabilities.
+- Sites Captcha / Anti Bot / Etc. You can easily exploit these vulnerabilities because it does not use.
+- Sites can use at least Captcha to block such systems.
+- Such systems can be done for more than one site. In this way, it can disturb a target.
+- In addition, Check the Config File There is something there for you
 
-## Tech Stack
 
-**Server:** Node, Faker, Colors, Request, Express, Cookie Parser, BodyParser, Mongoose, etc.
+# 🛠️ Installation 🛠️
+
+- Download and install [NodeJs](https://nodejs.org/en/download) on your computer.
+- Download the project as Zip to your computer and unzip it.
+- Enter the folder you extracted from the zip and open a terminal to the location of that folder, then enter the following commands.
+`npm install`
+- Start the bot by entering the following command in Terminal
+`node .`
+
+## ⛳Tech Stack ⛳
+
+**🗄️Server:** Node, Faker, Colors, Request, Express, Cookie Parser, BodyParser, Mongoose, etc.
 
 ---
-- ✨ [Destek İçin](https://fastuptime.com) <br>
+- ✨ [For Support](https://github.com/sponsors/fastuptime) <br>
 - 💕 [Discord](https://fastuptime.com/discord)<br>
-- 🎖️ [FasterHost Technology](https://fasterhost.tech/)<br>
-- ✨ İletişim için [Tıkla!](mailto:fastuptime@gmail.com)<br>
+- 🏓 [Fast Uptime](https://fastuptime.com/)<br>
+- 🪄 All kinds of projects are made <br>
+- 🧨 You can contact us to make a paid project<br>
+- ☄️ [Click For Contact](mailto:fastuptime@gmail.com)<br>
 
-# License
-- Its protected by Creative Commons ([CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/))
+# 🎯 License 🎯
+- ⚖️ Its protected by Creative Commons ([CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/))
 
 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" title="BYNCSA40"><img src="https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png"></a>
