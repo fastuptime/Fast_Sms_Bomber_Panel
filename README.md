@@ -31,6 +31,8 @@
 - Start the bot by entering the following command in Terminal
 `node .`
 
+https://www.youtube.com/watch?v=Tk2yuSbWvLk
+
 ## ⛳Tech Stack ⛳
 
 **🗄️Server:** Node, Faker, Colors, Request, Express, Cookie Parser, BodyParser, Mongoose, etc.
