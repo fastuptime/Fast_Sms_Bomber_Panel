@@ -1,5 +1,14 @@
 # Fast_Sms_Bomber_Panel
 
+
+# ✨Features and projects to be added as stars arrive✨
+
+- ~~Sms Bomber As Terminal -> 0 Stars ✨~~ [Done GitHub Link](https://github.com/fastuptime/Fast_Sms_Bomber)
+- ~~Sms Bomber As Discord Bot -> 5 Stars ✨~~ [Done GitHub Link](https://github.com/fastuptime/Fast_Sms_Bomber_Discord)
+- ~~Sms Bomber As API -> 10 Stars ✨~~ [Done GitHub Link](https://github.com/fastuptime/Fast_Sms_Bomber_Api)
+- ~~Panelled Sms Bomber -> 15 Stars ✨~~ [Done GitHub Link](https://github.com/fastuptime/Fast_Sms_Bomber_Panel)
+- ~~Fast Sms Bomber Module Test -> 40 Stars ✨~~ [Done GitHub Link](https://github.com/fastuptime/Fast_Sms_Bomber_Module)
+
 ##  🎈 Images 🎈
 
 ![image](https://github.com/fastuptime/Fast_Sms_Bomber_Panel/assets/63351166/075896b9-94af-4447-8dd8-a0e809f51ade)
